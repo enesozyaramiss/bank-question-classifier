@@ -1,0 +1,207 @@
+BONUS: MBERT MODEL FOR BULGARIAN TEXT CLASSIFICATION
+============================================================
+Using device: cuda
+   GPU: Tesla T4
+   Memory: 14.7 GB
+
+LOADING AND PREPARING DATA
+----------------------------------------
+Please upload your CSV files:
+   1. Upload train_data.csv
+   2. Upload test_data.csv
+
+Upload train_data.csv:
+No file chosen Upload widget is only available when the cell has been executed in the current browser session. Please rerun this cell to enable.
+Saving train_data.csv to train_data (6).csv
+Uploaded: train_data (6).csv
+
+Upload test_data.csv:
+No file chosen Upload widget is only available when the cell has been executed in the current browser session. Please rerun this cell to enable.
+Saving test_data.csv to test_data (6).csv
+Uploaded: test_data (6).csv
+
+Loading datasets...
+Data loaded successfully!
+   Training samples: 1565
+   Test samples: 392
+   Classes: 13
+
+Train data preview:
+                                    question_cleaned  \
+0  може ли клиент да използва само интернет банки...   
+1  въвеждам номер на лк и получавам грешка: полет...   
+2                           служител светослав симов   
+
+           department_target  
+0  Пазар Ежедневно банкиране  
+1                      Други  
+2                      Други  
+
+Class Distribution:
+    1. Пазар Ежедневно банкиране       458 ( 29.3%)
+    2. Други                           254 ( 16.2%)
+    3. Пазар Жилищни и ипотечни креди  215 ( 13.7%)
+    4. Пазар Потребителско кредитиран  115 (  7.3%)
+    5. Пазар Разсрочени плащания        96 (  6.1%)
+    6. Пазар Малък бизнес               76 (  4.9%)
+    7. ДИРЕКЦИЯ БАНКОВИ ОПЕРАЦИИ        66 (  4.2%)
+    8. Пазар Спестяване и инвестиции    66 (  4.2%)
+    9. Няколко пазара                   56 (  3.6%)
+   10. Пазар Банково застраховане       53 (  3.4%)
+   11. ДИРЕКЦИЯ ПАЗАР АТМ И КАСОВА ДЕ   49 (  3.1%)
+   12. Support_Services                 35 (  2.2%)
+   13. ДИРЕКЦИЯ КРЕДИТЕН РИСК ИНДИВИД   26 (  1.7%)
+
+ Label Encoding:
+   Number of classes: 13
+   Sample mapping: [(0, 'Support_Services'), (1, 'ДИРЕКЦИЯ БАНКОВИ ОПЕРАЦИИ'), (2, 'ДИРЕКЦИЯ КРЕДИТЕН РИСК ИНДИВИДУАЛНИ КЛИЕНТИ')]...
+
+
+SETTING UP MBERT MODEL
+----------------------------------------
+Model Configuration:
+   Model: bert-base-multilingual-cased
+   Max length: 128
+   Number of labels: 13
+Loading tokenizer and model...
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Model loaded successfully!
+   Model parameters: 177,863,437
+
+
+
+TOKENIZING TEXT DATA
+----------------------------------------
+Tokenizing training data...
+Map:   0%|          | 0/1565 [00:00<?, ? examples/s]
+Tokenizing test data...
+Map:   0%|          | 0/392 [00:00<?, ? examples/s]
+Tokenization completed!
+   Train dataset size: 1565
+   Test dataset size: 392
+
+Sample tokenization:
+   Original: може ли клиент да използва само интернет банкирането dsk online?
+   Tokens: 18
+   First 10 token IDs: [101, 13076, 33190, 551, 10783, 28252, 10405, 47913, 14847, 51754] TRAINING CONFIGURATION
+----------------------------------------
+Class weights calculated for imbalanced data
+   Weight range: 0.263 - 4.630
+Training Configuration:
+   Epochs: 15
+   Batch size: 8
+   Learning rate: 3e-05
+   Weight decay: 0.001
+   FP16: True
+
+STARTING MODEL TRAINING
+----------------------------------------
+Training started...
+This may take 15-30 minutes depending on your GPU...
+ [735/735 09:16, Epoch 15/15]
+Step	Training Loss	Validation Loss	Accuracy	F1 Macro	F1 Weighted
+50	2.571500	2.559144	0.135204	0.043875	0.095540
+100	2.508900	2.459057	0.431122	0.184855	0.350819
+150	2.238900	2.098746	0.556122	0.406240	0.523753
+200	1.811700	1.666692	0.614796	0.501673	0.593031
+250	1.338700	1.326974	0.688776	0.605470	0.696532
+300	0.968600	1.291418	0.706633	0.596066	0.695644
+350	0.585900	1.258139	0.696429	0.610128	0.695120
+400	0.440400	1.326015	0.714286	0.621826	0.707106
+450	0.267800	1.448195	0.701531	0.632209	0.695630
+500	0.205800	1.450776	0.704082	0.636826	0.710532
+550	0.136700	1.568579	0.706633	0.611001	0.700044
+600	0.102500	1.648160	0.716837	0.633823	0.714839
+650	0.048900	1.726135	0.716837	0.628669	0.714981
+700	0.042900	1.800277	0.724490	0.628262	0.718899
+Training completed!
+   Final training loss: 0.9425
+   Global step: 735
+   Training completed successfully!
+
+MODEL EVALUATION
+----------------------------------------
+Evaluating model on test set...
+Test Results:
+   eval_loss: 1.8003
+   eval_accuracy: 0.7245
+   eval_f1_macro: 0.6283
+   eval_f1_weighted: 0.7189
+   eval_runtime: 0.8414
+   eval_samples_per_second: 465.9140
+   eval_steps_per_second: 15.4510
+   epoch: 15.0000
+
+Generating detailed predictions...
+
+DETAILED CLASSIFICATION REPORT:
+============================================================
+                                             precision    recall  f1-score   support
+
+                           Support_Services       0.67      0.44      0.53         9
+                  ДИРЕКЦИЯ БАНКОВИ ОПЕРАЦИИ       0.44      0.47      0.46        17
+ДИРЕКЦИЯ КРЕДИТЕН РИСК ИНДИВИДУАЛНИ КЛИЕНТИ       0.43      0.43      0.43         7
+        ДИРЕКЦИЯ ПАЗАР АТМ И КАСОВА ДЕЙНОСТ       0.25      0.17      0.20        12
+                                      Други       0.65      0.71      0.68        63
+                             Няколко пазара       0.08      0.07      0.08        14
+                 Пазар Банково застраховане       0.79      0.85      0.81        13
+                  Пазар Ежедневно банкиране       0.79      0.75      0.77       114
+           Пазар Жилищни и ипотечни кредити       0.85      0.87      0.86        54
+                         Пазар Малък бизнес       0.87      0.68      0.76        19
+            Пазар Потребителско кредитиране       0.87      0.90      0.88        29
+                  Пазар Разсрочени плащания       0.76      0.92      0.83        24
+              Пазар Спестяване и инвестиции       0.80      0.94      0.86        17
+
+                                   accuracy                           0.72       392
+                                  macro avg       0.63      0.63      0.63       392
+                               weighted avg       0.72      0.72      0.72       392
+
+
+CREATING VISUALIZATIONS
+----------------------------------------
+
+
+COMPARISON WITH TRADITIONAL MODEL
+----------------------------------------
+MBERT Model Results:
+   Accuracy: 0.7245 (72.4%)
+   F1 Macro: 0.6283
+   F1 Weighted: 0.7189
+
+Traditional Model (Logistic Regression) Results:
+   Accuracy: 0.6964 (69.6%)
+   F1 Macro: 0.6500 (estimated)
+
+IMPROVEMENT ANALYSIS:
+   Accuracy improvement: +4.0%
+   Absolute improvement: +0.0281
+   Moderate improvement with MBERT
+
+SAVING RESULTS
+----------------------------------------
+Results saved:
+   mbert_test_results.csv
+   mbert_performance_by_department.csv
+   mbert_final_model/ (directory)
+
+FINAL SUMMARY:
+   Model: MBERT (bert-base-multilingual-cased)
+   Training samples: 1565
+   Test samples: 392
+   Classes: 13
+   Test accuracy: 0.7245 (72.4%)
+   Average confidence: 0.933
+   Training completed successfully in ~6-8 minutes
+
+Best performing classes:
+   • Пазар Потребителско кредитиран F1: 0.881
+   • Пазар Спестяване и инвестиции  F1: 0.865
+   • Пазар Жилищни и ипотечни креди F1: 0.862
+
+Classes needing improvement:
+   • ДИРЕКЦИЯ КРЕДИТЕН РИСК ИНДИВИД F1: 0.429
+   • ДИРЕКЦИЯ ПАЗАР АТМ И КАСОВА ДЕ F1: 0.200
+   • Няколко пазара                 F1: 0.077
+
+MBERT EXPERIMENT COMPLETED!

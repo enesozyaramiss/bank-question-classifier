@@ -1,0 +1,25 @@
+{
+  "model_name": "Logistic Regression",
+  "model_type": "LogisticRegression",
+  "cv_accuracy": 0.678594249201278,
+  "test_accuracy": 0.6964285714285714,
+  "best_parameters": {
+    "C": 5.0,
+    "max_iter": 1000,
+    "penalty": "l2",
+    "solver": "liblinear"
+  },
+  "training_date": "2025-07-28 14:25:33",
+  "training_samples": 1565,
+  "test_samples": 392,
+  "num_classes": 13,
+  "vectorizer_params": {
+    "max_features": 5000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_df": 0.95
+  }
+}
