@@ -98,7 +98,6 @@ For the MBERT experiment:
 ### `01_data_exploration.ipynb`
 - **Purpose:** Exploratory data analysis of Bulgarian banking questions
 - **Key Outputs:** Data quality assessment, class distribution analysis
-- **Runtime:** ~2 minutes
 - **What to expect:** 
   - Dataset overview (1,962 questions)
   - Class imbalance visualization (576:1 ratio)
@@ -107,7 +106,6 @@ For the MBERT experiment:
 ### `02_data_preprocessing.ipynb`
 - **Purpose:** Clean Bulgarian text and prepare modeling data
 - **Key Outputs:** Clean train/test datasets, class consolidation
-- **Runtime:** ~3 minutes
 - **What to expect:**
   - Bulgarian text normalization
   - Class consolidation (15 → 13 departments)
@@ -116,7 +114,6 @@ For the MBERT experiment:
 ### `03_model_development.ipynb`
 - **Purpose:** Train and compare multiple ML models
 - **Key Outputs:** Best model selection, hyperparameter optimization
-- **Runtime:** ~15 minutes
 - **What to expect:**
   - 6 algorithm comparison
   - TF-IDF feature engineering
@@ -126,7 +123,6 @@ For the MBERT experiment:
 ### `04_model_analysis.ipynb`
 - **Purpose:** Advanced error analysis and visualization
 - **Key Outputs:** Confusion matrices, confidence analysis, learning curves
-- **Runtime:** ~5 minutes
 - **What to expect:**
   - Detailed performance visualizations
   - Error pattern analysis
@@ -135,7 +131,6 @@ For the MBERT experiment:
 ### `BONUS_MBERT-GoogleColab.ipynb` 
 - **Purpose:** Deep learning approach with multilingual BERT
 - **Key Outputs:** MBERT vs traditional comparison
-- **Runtime:** ~15 minutes (GPU required)
 - **What to expect:**
   - **MBERT Result:** 72.4% test accuracy (+4.0% improvement)
   - Resource usage comparison
