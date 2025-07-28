@@ -2,7 +2,7 @@
 
 ##  Overview
 
-This project implements an automated system for classifying Bulgarian banking customer questions into appropriate departments. The system combines traditional machine learning with modern deep learning approaches to achieve **88.6% accuracy** on real-world data.
+This project implements an automated system for classifying  banking customer questions into appropriate departments. The system combines traditional machine learning with modern deep learning approaches to achieve **88.6% accuracy** on real-world data.
 
 ##  Key Results
 
