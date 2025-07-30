@@ -9,7 +9,7 @@
     "penalty": "l2",
     "solver": "liblinear"
   },
-  "training_date": "2025-07-28 14:25:33",
+  "training_date": "2025-07-30 09:58:26",
   "training_samples": 1565,
   "test_samples": 392,
   "num_classes": 13,
